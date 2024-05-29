@@ -1,12 +1,39 @@
-<?php namespace Jenssegers\Model;
+<?php declare(strict_types=1);
+
+namespace Jenssegers\Model;
 
 use ArrayAccess;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Support\Str;
 use JsonSerializable;
+
+use function array_combine;
+use function array_diff;
+use function array_diff_key;
+use function array_flip;
+use function array_intersect_key;
+use function array_key_exists;
+use function array_map;
+use function array_merge;
+use function call_user_func_array;
+use function count;
+use function func_get_args;
+use function get_class;
+use function get_class_methods;
+use function implode;
+use function in_array;
+use function is_array;
+use function json_decode;
+use function json_encode;
+use function lcfirst;
+use function method_exists;
+use function preg_match_all;
+use function strtolower;
+use function trim;
+use function with;
 
 /**
  * @implements ArrayAccess<string, mixed>
@@ -94,7 +121,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      * Fill the model with an array of attributes.
      *
      * @param mixed[] $attributes
-     * @throws \Jenssegers\Model\MassAssignmentException
+     * @throws MassAssignmentException
      */
     public function fill(array $attributes): self
     {
@@ -152,9 +179,9 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      * Create a new instance of the given model.
      *
      * @param  mixed[] $attributes
-     * @return \Jenssegers\Model\Model
+     * @return Model
      */
-    public function newInstance($attributes = []): self
+    public function newInstance(array $attributes = []): self
     {
         return new static((array) $attributes);
     }
@@ -172,7 +199,8 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         return array_map(
             function ($item) use ($instance) {
                 return $instance->newInstance($item);
-            }, $items
+            },
+            $items
         );
     }
 
@@ -203,7 +231,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param string|string[]|null $attributes
      */
-    public function addHidden($attributes = null): void
+    public function addHidden(string|array|null $attributes = null): void
     {
         $attributes = is_array($attributes) ? $attributes : func_get_args();
 
@@ -215,7 +243,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param string[]|string $attributes
      */
-    public function withHidden($attributes): self
+    public function withHidden(array|string $attributes): self
     {
         $this->hidden = array_diff($this->hidden, (array) $attributes);
 
@@ -249,7 +277,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param string|string[]|null $attributes
      */
-    public function addVisible($attributes = null): void
+    public function addVisible(string|array|null $attributes = null): void
     {
         $attributes = is_array($attributes) ? $attributes : func_get_args();
 
@@ -386,7 +414,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function isGuarded(string $key): bool
     {
-        return in_array($key, $this->guarded) || $this->guarded == ['*'];
+        return in_array($key, $this->guarded) || $this->guarded === ['*'];
     }
 
     /**
@@ -394,7 +422,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function totallyGuarded(): bool
     {
-        return count($this->fillable) == 0 && $this->guarded == ['*'];
+        return count($this->fillable) === 0 && $this->guarded === ['*'];
     }
 
     /**
@@ -403,7 +431,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      * @param int $options
      * @return string|false
      */
-    public function toJson($options = 0)
+    public function toJson(int $options = 0)
     {
         return json_encode($this->jsonSerialize(), $options);
     }
@@ -448,7 +476,8 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
             }
 
             $attributes[$key] = $this->mutateAttributeForArray(
-                $key, $attributes[$key]
+                $key,
+                $attributes[$key]
             );
         }
 
@@ -463,7 +492,8 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
             }
 
             $attributes[$key] = $this->castAttribute(
-                $key, $attributes[$key]
+                $key,
+                $attributes[$key]
             );
         }
 
@@ -619,32 +649,39 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     protected function castAttribute(string $key, mixed $value): mixed
     {
-        if (is_null($value)) {
+        if ($value === null) {
             return $value;
         }
 
         switch ($this->getCastType($key)) {
-        case 'int':
-        case 'integer':
-            return (int) $value;
-        case 'real':
-        case 'float':
-        case 'double':
-            return (float) $value;
-        case 'string':
-            return (string) $value;
-        case 'bool':
-        case 'boolean':
-            return (bool) $value;
-        case 'object':
-            return $this->fromJson($value, true);
-        case 'array':
-        case 'json':
-            return $this->fromJson($value);
-        case 'collection':
-            return new BaseCollection($this->fromJson($value));
-        default:
-            return $value;
+            case 'int':
+            case 'integer':
+                return (int) $value;
+
+            case 'real':
+            case 'float':
+            case 'double':
+                return (float) $value;
+
+            case 'string':
+                return (string) $value;
+
+            case 'bool':
+            case 'boolean':
+                return (bool) $value;
+
+            case 'object':
+                return $this->fromJson($value, true);
+
+            case 'array':
+            case 'json':
+                return $this->fromJson($value);
+
+            case 'collection':
+                return new BaseCollection($this->fromJson($value));
+
+            default:
+                return $value;
         }
     }
 
@@ -664,7 +701,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
             return $this;
         }
 
-        if ($this->isJsonCastable($key) && ! is_null($value)) {
+        if ($this->isJsonCastable($key) && $value !== null) {
             $value = $this->asJson($value);
         }
 
@@ -817,7 +854,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     public function __isset(string $key): bool
     {
         return (isset($this->attributes[$key]) || isset($this->relations[$key]))
-            || ($this->hasGetMutator($key) && ! is_null($this->getAttributeValue($key)));
+            || ($this->hasGetMutator($key) && $this->getAttributeValue($key) !== null);
     }
 
     /**

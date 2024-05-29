@@ -1,6 +1,13 @@
-<?php
+<?php declare(strict_types=1);
+
+namespace Tests\stubs;
 
 use Jenssegers\Model\Model;
+
+use function date;
+use function json_decode;
+use function json_encode;
+use function strtotime;
 
 class ModelStub extends Model
 {

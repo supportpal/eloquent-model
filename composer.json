@@ -25,7 +25,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Jenssegers\\Model\\": "src/"
+            "Jenssegers\\Model\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "autoload-dev": {

@@ -1,6 +1,19 @@
-<?php
+<?php declare(strict_types=1);
+
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+
+use function date;
+use function is_array;
+use function is_bool;
+use function is_float;
+use function is_int;
+use function is_string;
+use function json_encode;
+use function serialize;
+use function strtotime;
+use function unserialize;
 
 class ModelTest extends TestCase
 {
@@ -238,7 +251,7 @@ class ModelTest extends TestCase
     {
         $this->expectException('Jenssegers\Model\MassAssignmentException');
 
-        $model = new ModelStub();
+        $model = new ModelStub;
         $model->guard(['*']);
         $model->fillable([]);
         $model->fill(['name' => 'John Doe']);
