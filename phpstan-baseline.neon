@@ -1,0 +1,101 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$callback of function call_user_func_array expects callable\\(\\)\\: mixed, array\\{static\\(Jenssegers\\\\Model\\\\Model\\), string\\} given\\.$#"
+			count: 1
+			path: src/Model.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 4
+			path: src/Model.php
+
+		-
+			message: "#^Access to an undefined property Jenssegers\\\\Model\\\\Model\\:\\:\\$name\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$active\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$age\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$bar\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$birthday\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$city\\.$#"
+			count: 3
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$collection_data\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$count\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$data\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$default\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$foo\\.$#"
+			count: 4
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$list_items\\.$#"
+			count: 2
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$name\\.$#"
+			count: 10
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$object_data\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$password\\.$#"
+			count: 2
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$score\\.$#"
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$secret\\.$#"
+			count: 2
+			path: tests/ModelTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of static method Jenssegers\\\\Model\\\\Model\\:\\:unguarded\\(\\) expects callable\\(\\)\\: mixed, array\\{PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass, 'callback'\\} given\\.$#"
+			count: 1
+			path: tests/ModelTest.php

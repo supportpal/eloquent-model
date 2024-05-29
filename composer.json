@@ -17,14 +17,26 @@
     },
     "require-dev": {
         "php-coveralls/php-coveralls": "^2.7.0",
-        "phpunit/phpunit": "^10.0"
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.0",
+        "slevomat/coding-standard": "^8.15",
+        "squizlabs/php_codesniffer": "^3.5",
+        "supportpal/coding-standard": "^0.4"
     },
     "autoload": {
         "psr-4": {
-            "Jenssegers\\Model\\": "src/"
+            "Jenssegers\\Model\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "autoload-dev": {
-        "classmap": ["tests/stubs"]
+        "classmap": [
+            "tests/Stubs"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

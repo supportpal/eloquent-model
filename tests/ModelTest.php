@@ -1,10 +1,25 @@
-<?php
+<?php declare(strict_types=1);
+
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use stdClass;
+use Tests\Stubs\ModelStub;
+
+use function date;
+use function is_array;
+use function is_bool;
+use function is_float;
+use function is_int;
+use function is_string;
+use function json_encode;
+use function serialize;
+use function strtotime;
+use function unserialize;
 
 class ModelTest extends TestCase
 {
-    public function testAttributeManipulation()
+    public function testAttributeManipulation(): void
     {
         $model = new ModelStub;
         $model->name = 'foo';
@@ -21,22 +36,22 @@ class ModelTest extends TestCase
         $this->assertFalse(isset($model['name']));
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $model = new ModelStub(['name' => 'john']);
         $this->assertEquals('john', $model->name);
     }
 
-    public function testNewInstanceWithAttributes()
+    public function testNewInstanceWithAttributes(): void
     {
         $model = new ModelStub;
         $instance = $model->newInstance(['name' => 'john']);
 
-        $this->assertInstanceOf('ModelStub', $instance);
+        $this->assertInstanceOf(ModelStub::class, $instance);
         $this->assertEquals('john', $instance->name);
     }
 
-    public function testHidden()
+    public function testHidden(): void
     {
         $model = new ModelStub;
         $model->password = 'secret';
@@ -46,7 +61,7 @@ class ModelTest extends TestCase
         $this->assertEquals(['password'], $model->getHidden());
     }
 
-    public function testVisible()
+    public function testVisible(): void
     {
         $model = new ModelStub;
         $model->setVisible(['name']);
@@ -57,7 +72,7 @@ class ModelTest extends TestCase
         $this->assertEquals(['name' => 'John Doe'], $attributes);
     }
 
-    public function testToArray()
+    public function testToArray(): void
     {
         $model = new ModelStub;
         $model->name = 'foo';
@@ -79,7 +94,7 @@ class ModelTest extends TestCase
         $this->assertTrue(isset($array['password']));
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $model = new ModelStub;
         $model->name = 'john';
@@ -93,7 +108,7 @@ class ModelTest extends TestCase
         $this->assertEquals(json_encode($object), (string) $model);
     }
 
-    public function testMutator()
+    public function testMutator(): void
     {
         $model = new ModelStub;
         $model->list_items = ['name' => 'john'];
@@ -110,7 +125,7 @@ class ModelTest extends TestCase
         $this->assertEquals(20, $model->age);
     }
 
-    public function testToArrayUsesMutators()
+    public function testToArrayUsesMutators(): void
     {
         $model = new ModelStub;
         $model->list_items = [1, 2, 3];
@@ -119,7 +134,7 @@ class ModelTest extends TestCase
         $this->assertEquals([1, 2, 3], $array['list_items']);
     }
 
-    public function testReplicate()
+    public function testReplicate(): void
     {
         $model = new ModelStub;
         $model->name = 'John Doe';
@@ -130,7 +145,7 @@ class ModelTest extends TestCase
         $this->assertEquals($model->name, $clone->name);
     }
 
-    public function testAppends()
+    public function testAppends(): void
     {
         $model = new ModelStub;
         $array = $model->toArray();
@@ -143,7 +158,7 @@ class ModelTest extends TestCase
         $this->assertEquals('test', $array['test']);
     }
 
-    public function testArrayAccess()
+    public function testArrayAccess(): void
     {
         $model = new ModelStub;
         $model->name = 'John Doen';
@@ -153,7 +168,7 @@ class ModelTest extends TestCase
         $this->assertEquals($model->city, $model['city']);
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $model = new ModelStub;
         $model->name = 'john';
@@ -163,7 +178,7 @@ class ModelTest extends TestCase
         $this->assertEquals($model, unserialize($serialized));
     }
 
-    public function testCasts()
+    public function testCasts(): void
     {
         $model = new ModelStub;
         $model->score = '0.34';
@@ -201,7 +216,7 @@ class ModelTest extends TestCase
         $this->assertInstanceOf('\Illuminate\Support\Collection', $array['collection_data']);
     }
 
-    public function testGuarded()
+    public function testGuarded(): void
     {
         $model = new ModelStub(['secret' => 'foo']);
         $this->assertTrue($model->isGuarded('secret'));
@@ -220,7 +235,7 @@ class ModelTest extends TestCase
         ModelStub::reguard();
     }
 
-    public function testGuardedCallback()
+    public function testGuardedCallback(): void
     {
         ModelStub::unguard();
         $mock = $this->getMockBuilder('stdClass')
@@ -234,17 +249,17 @@ class ModelTest extends TestCase
         ModelStub::reguard();
     }
 
-    public function testTotallyGuarded()
+    public function testTotallyGuarded(): void
     {
         $this->expectException('Jenssegers\Model\MassAssignmentException');
 
-        $model = new ModelStub();
+        $model = new ModelStub;
         $model->guard(['*']);
         $model->fillable([]);
         $model->fill(['name' => 'John Doe']);
     }
 
-    public function testFillable()
+    public function testFillable(): void
     {
         $model = new ModelStub(['foo' => 'bar']);
         $this->assertFalse($model->isFillable('foo'));
@@ -259,7 +274,7 @@ class ModelTest extends TestCase
         $this->assertEquals('bar', $model->foo);
     }
 
-    public function testHydrate()
+    public function testHydrate(): void
     {
         $models = ModelStub::hydrate([['name' => 'John Doe']]);
         $this->assertEquals('John Doe', $models[0]->name);
