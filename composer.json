@@ -1,8 +1,8 @@
 {
-    "name": "jenssegers/model",
+    "name": "supportpal/eloquent-model",
     "description": "An Laravel eloquent-like model class, for Laravel and other frameworks",
     "keywords": ["laravel", "eloquent", "model"],
-    "homepage": "https://github.com/jenssegers/model",
+    "homepage": "https://github.com/supportpal/eloquent-model",
     "license" : "MIT",
     "authors": [
         {
@@ -36,7 +36,7 @@
     },
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": false
         }
     }
 }
