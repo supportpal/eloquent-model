@@ -8,40 +8,58 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Collection as BaseCollection;
 use JsonSerializable;
 
+/**
+ * @implements ArrayAccess<string, mixed>
+ * @implements Arrayable<string, mixed>
+ */
 abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
 {
     /**
      * The model's attributes.
+     *
+     * @var mixed[]
      */
     protected array $attributes = [];
 
     /**
      * The attributes that should be hidden for arrays.
+     *
+     * @var string[]
      */
     protected array $hidden = [];
 
     /**
      * The attributes that should be visible in arrays.
+     *
+     * @var string[]
      */
     protected array $visible = [];
 
     /**
      * The accessors to append to the model's array form.
+     *
+     * @var string[]
      */
     protected array $appends = [];
 
     /**
      * The attributes that are mass assignable.
+     *
+     * @var string[]
      */
     protected array $fillable = [];
 
     /**
      * The attributes that aren't mass assignable.
+     *
+     * @var string[]
      */
     protected array $guarded = [];
 
     /**
      * The attributes that should be casted to native types.
+     *
+     * @var array<string, mixed>
      */
     protected array $casts = [];
 
@@ -57,11 +75,15 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 
     /**
      * The cache of the mutated attributes for each class.
+     *
+     * @var mixed[]
      */
     protected static array $mutatorCache = [];
 
     /**
      * Create a new Eloquent model instance.
+     *
+     * @param mixed[] $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -379,8 +401,9 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      * Convert the model instance to JSON.
      *
      * @param int $options
+     * @return string|false
      */
-    public function toJson($options = 0): string
+    public function toJson($options = 0)
     {
         return json_encode($this->jsonSerialize(), $options);
     }
@@ -821,8 +844,14 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     /**
      * Convert the model to its string representation.
      */
-    public function __toString(): string
+    public function __toString()
     {
-        return $this->toJson();
+        $string = $this->toJson();
+
+        if ($string === false) {
+            return '';
+        }
+
+        return $string;
     }
 }

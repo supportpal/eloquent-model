@@ -4,8 +4,10 @@ use Jenssegers\Model\Model;
 
 class ModelStub extends Model
 {
-    protected array $hidden = [ 'password'];
+    /** @var string[] */
+    protected array $hidden = ['password'];
 
+    /** @var array<string, string> */
     protected array $casts = [
         'age'   => 'integer',
         'score' => 'float',
@@ -18,10 +20,12 @@ class ModelStub extends Model
         'foo' => 'bar',
     ];
 
+    /** @var string[] */
     protected array $guarded = [
         'secret',
     ];
 
+    /** @var string[] */
     protected array $fillable = [
         'name',
         'city',
@@ -35,34 +39,38 @@ class ModelStub extends Model
         'collection_data',
     ];
 
-    public function getListItemsAttribute($value)
+    public function getListItemsAttribute(mixed $value): mixed
     {
         return json_decode($value, true);
     }
 
-    public function setListItemsAttribute($value)
+    public function setListItemsAttribute(mixed $value): void
     {
         $this->attributes['list_items'] = json_encode($value);
     }
 
-    public function setBirthdayAttribute($value)
+    public function setBirthdayAttribute(mixed $value): void
     {
         $this->attributes['birthday'] = strtotime($value);
     }
 
-    public function getBirthdayAttribute($value)
+    public function getBirthdayAttribute(mixed $value): string
     {
         return date('Y-m-d', $value);
     }
 
-    public function getAgeAttribute($value)
+    public function getAgeAttribute(mixed $value): int
     {
         $date = DateTime::createFromFormat('U', $this->attributes['birthday']);
+
+        if ($date === false) {
+            return 0;
+        }
 
         return $date->diff(new DateTime('now'))->y;
     }
 
-    public function getTestAttribute($value)
+    public function getTestAttribute(mixed $value): string
     {
         return 'test';
     }
