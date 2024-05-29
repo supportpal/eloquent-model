@@ -16,82 +16,82 @@ parameters:
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$active\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$active\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$age\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$age\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$bar\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$bar\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$birthday\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$birthday\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$city\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$city\\.$#"
 			count: 3
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$collection_data\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$collection_data\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$count\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$count\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$data\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$data\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$default\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$default\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$foo\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$foo\\.$#"
 			count: 4
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$list_items\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$list_items\\.$#"
 			count: 2
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$name\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$name\\.$#"
 			count: 10
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$object_data\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$object_data\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$password\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$password\\.$#"
 			count: 2
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$score\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$score\\.$#"
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property ModelStub\\:\\:\\$secret\\.$#"
+			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$secret\\.$#"
 			count: 2
 			path: tests/ModelTest.php
 

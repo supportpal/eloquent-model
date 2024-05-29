@@ -30,7 +30,9 @@
         }
     },
     "autoload-dev": {
-        "classmap": ["tests/stubs"]
+        "classmap": [
+            "tests/Stubs"
+        ]
     },
     "config": {
         "allow-plugins": {

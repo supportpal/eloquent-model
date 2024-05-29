@@ -3,6 +3,8 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use stdClass;
+use Tests\Stubs\ModelStub;
 
 use function date;
 use function is_array;
@@ -45,7 +47,7 @@ class ModelTest extends TestCase
         $model = new ModelStub;
         $instance = $model->newInstance(['name' => 'john']);
 
-        $this->assertInstanceOf('ModelStub', $instance);
+        $this->assertInstanceOf(ModelStub::class, $instance);
         $this->assertEquals('john', $instance->name);
     }
 

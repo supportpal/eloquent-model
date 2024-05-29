@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Tests\stubs;
+namespace Tests\Stubs;
 
+use DateTime;
 use Jenssegers\Model\Model;
 
 use function date;
@@ -68,7 +69,7 @@ class ModelStub extends Model
 
     public function getAgeAttribute(mixed $value): int
     {
-        $date = DateTime::createFromFormat('U', $this->attributes['birthday']);
+        $date = DateTime::createFromFormat('U', (string) $this->attributes['birthday']);
 
         if ($date === false) {
             return 0;
