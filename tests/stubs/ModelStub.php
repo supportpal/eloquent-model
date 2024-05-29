@@ -4,9 +4,9 @@ use Jenssegers\Model\Model;
 
 class ModelStub extends Model
 {
-    protected $hidden = ['password'];
+    protected array $hidden = [ 'password'];
 
-    protected $casts = [
+    protected array $casts = [
         'age'   => 'integer',
         'score' => 'float',
         'data'  => 'array',
@@ -18,11 +18,11 @@ class ModelStub extends Model
         'foo' => 'bar',
     ];
 
-    protected $guarded = [
+    protected array $guarded = [
         'secret',
     ];
 
-    protected $fillable = [
+    protected array $fillable = [
         'name',
         'city',
         'age',
