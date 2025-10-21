@@ -1,101 +1,139 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$callback of function call_user_func_array expects callable\\(\\)\\: mixed, array\\{static\\(Jenssegers\\\\Model\\\\Model\\), string\\} given\\.$#"
+			message: '#^Parameter \#1 \$callback of function call_user_func_array expects callable\(\)\: mixed, array\{static\(Jenssegers\\Model\\Model\), string\} given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Model.php
 
 		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
 			count: 4
 			path: src/Model.php
 
 		-
-			message: "#^Access to an undefined property Jenssegers\\\\Model\\\\Model\\:\\:\\$name\\.$#"
+			message: '#^Access to an undefined property Jenssegers\\Model\\Model\:\:\$name\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$active\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$active\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$age\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$age\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$bar\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$bar\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$birthday\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$birthday\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$city\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$city\.$#'
+			identifier: property.notFound
 			count: 3
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$collection_data\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$collection_data\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$count\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$count\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$data\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$data\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$default\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$default\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$foo\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$foo\.$#'
+			identifier: property.notFound
 			count: 4
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$list_items\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$list_items\.$#'
+			identifier: property.notFound
 			count: 2
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$name\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$name\.$#'
+			identifier: property.notFound
 			count: 10
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$object_data\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$object_data\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$password\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$password\.$#'
+			identifier: property.notFound
 			count: 2
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$score\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$score\.$#'
+			identifier: property.notFound
 			count: 1
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Access to an undefined property Tests\\\\Stubs\\\\ModelStub\\:\\:\\$secret\\.$#"
+			message: '#^Access to an undefined property Tests\\Stubs\\ModelStub\:\:\$secret\.$#'
+			identifier: property.notFound
 			count: 2
 			path: tests/ModelTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of static method Jenssegers\\\\Model\\\\Model\\:\\:unguarded\\(\\) expects callable\\(\\)\\: mixed, array\\{PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass, 'callback'\\} given\\.$#"
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: tests/ModelTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''\\\\Illuminate\\\\Support…'' and array\{array\{foo\: ''bar'', baz\: ''bat''\}\} will always evaluate to false\.$#'
+			identifier: method.impossibleType
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''\\\\stdClass'' and array\{foo\: ''bar''\} will always evaluate to false\.$#'
+			identifier: method.impossibleType
+			count: 1
+			path: tests/ModelTest.php
+
+		-
+			message: '#^Parameter \#1 \$callback of static method Jenssegers\\Model\\Model\:\:unguarded\(\) expects callable\(\)\: mixed, array\{PHPUnit\\Framework\\MockObject\\MockObject&stdClass, ''callback''\} given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tests/ModelTest.php
